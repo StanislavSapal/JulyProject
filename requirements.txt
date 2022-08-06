@@ -3,3 +3,4 @@ Django==3.0.2
 Pillow==9.2.0
 pytz==2022.1
 sqlparse==0.4.2
+ipython==8.4.0
