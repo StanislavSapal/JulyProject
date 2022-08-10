@@ -5,8 +5,12 @@ from news.models import News
 
 
 def index(request):
-    #print(request)
-    return HttpResponse('<h2>Hello world</h2>')
+    news = News.objects.order_by('-created_at')
+    context = {
+        'news': news,
+        'title': 'Список новин'
+    }
+    return render(request, 'news/index.html', context)
 
 
 def test(request):
@@ -38,13 +42,13 @@ def rename_to_govno(request):
 # новини немає"
 
 def delete_govno(request):
-    wanted_news = News.objects.filter(title='Говно').first()
+    govno_news = News.objects.filter(title='Говно').first()
 
-    if not wanted_news:
+    if not govno_news:
         result = f'<h2>Новини з таким заголовком нема, ти шо на приколі? Хто так називає новини?</h2>'
     else:
-        wanted_news_title = wanted_news.title
-        wanted_news.delete()
-        result = f'<h2>Новину з заголовком {wanted_news_title} видалено</h2>'
+        govno_news_title = govno_news.title
+        govno_news.delete()
+        result = f'<h2>Новину з заголовком {govno_news_title} видалено</h2>'
 
     return HttpResponse(result)
