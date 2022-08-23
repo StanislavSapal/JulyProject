@@ -13,7 +13,7 @@
   {% for i in news %}
   <div class="card mb-3">
     <div class="card-header">
-      Категорія: <a href="{% url 'category' i.category.pk %}">{{ i.category }}</a>
+      Категорія: <a href="{{ i.category.get_absolute_url }}">{{ i.category }}</a>
     </div>
     <div class="card-body">
       <div class="media">
@@ -21,7 +21,7 @@
         <div class="media-body">
           <h5 class="card-title">{{ i.title }}</h5>
           <p class="card-text">{{ i.content }}</p>
-          <a href="#" class="btn btn-primary">Read more...</a>
+          <a href="{{ i.get_absolute_url }}" class="btn btn-primary">Читати...</a>
         </div>
         {% if i.photo %}
         <img class="ml-3" src="{{ i.photo.url }}" alt="" width="350">
