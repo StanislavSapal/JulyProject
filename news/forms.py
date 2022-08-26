@@ -14,6 +14,7 @@ class NewsForm(forms.ModelForm):
             'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
             'category': forms.Select(attrs={'class': 'form-control'})
         }
+
     def clean_title(self):
         title = self.cleaned_data['title']
         if re.match(r'\d', title):
