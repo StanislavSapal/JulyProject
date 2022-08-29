@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 
 from news.models import News, Category
-from .forms import NewsForm
+from .forms import NewsForm, CommentForm
 
 def index(request):
     news = News.objects.all()
@@ -77,3 +77,13 @@ def add_news(request):
         form = NewsForm()
     return render(request, 'news/add_news.html', {'form': form})
 
+
+def add_comment(request):
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            #return redirect(comment)
+    else:
+        form = CommentForm()
+    return render(request, 'news/add_comment.html', {'form': form})

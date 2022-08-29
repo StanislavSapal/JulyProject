@@ -20,3 +20,15 @@ class NewsForm(forms.ModelForm):
         if re.match(r'\d', title):
             raise ValidationError('Назва не може починатися з цифри')
         return title
+
+
+class CommentForm(forms.Form):
+    comment_text = forms.CharField(label='Ваш коментар', max_length=150, widget=forms.Textarea(
+        attrs={"class": "form-control",
+               "rows": 3}))
+
+    def clean_comment_text(self):
+        comment_text = self.cleaned_data['comment_text']
+        if not re.search('[\u0400-\u04FF]', comment_text):
+            raise ValidationError('Коментар не може бути написаний латиницею!')
+        return comment_text
