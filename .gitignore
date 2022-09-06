@@ -7,6 +7,7 @@ contractors-dev-accf2a452eaa.json
 # Logs
 logs
 *.log
+*.pyc
 npm-debug.log*
 /.idea
 *.iml
