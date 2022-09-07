@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
 
 from news.models import News, Category
-from .forms import NewsForm
+from .forms import NewsForm, CategoryForm
 
 
 class HomeNews(ListView):
@@ -30,11 +30,11 @@ class NewsByCategory(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = Category.objects.get(pk=self.kwargs['category_id'])
+        context['title'] = Category.objects.get(pk=self.kwargs['pk'])
         return context
 
     def get_queryset(self):
-        return News.objects.filter(category_id=self.kwargs['category_id'], is_published=True)
+        return News.objects.filter(category_id=self.kwargs['pk'], is_published=True)
 
 
 class ViewNews(DetailView):
@@ -48,6 +48,16 @@ class CreateNews(CreateView):
     form_class = NewsForm
     template_name = 'news/add_news.html'
     # success_url = reverse_lazy('home')
+
+
+class ViewCategory(DetailView):
+    model = Category
+    template_name = 'news/category_description.html'
+
+
+class CreateCategory(CreateView):
+    form_class = CategoryForm
+    template_name = 'news/add_category.html'
 
 
 def get_category(request, category_id):

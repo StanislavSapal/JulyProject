@@ -1,5 +1,5 @@
 from django import forms
-from news.models import News
+from news.models import News, Category
 import re
 from django.core.exceptions import ValidationError
 
@@ -13,6 +13,22 @@ class NewsForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
             'category': forms.Select(attrs={'class': 'form-control'})
+        }
+
+    def clean_title(self):
+        title = self.cleaned_data['title']
+        if re.match(r'\d', title):
+            raise ValidationError('Назва не може починатися з цифри')
+        return title
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['title', 'description']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 5})
         }
 
     def clean_title(self):

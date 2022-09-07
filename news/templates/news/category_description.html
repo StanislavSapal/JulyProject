@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Про категорію '{{ object.title }}' :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+
+{% block content %}
+<h3>{{ object.title }}</h3>
+<br>
+<br>
+<h3>{{ object.description }}</h3>
+{% endblock %}

@@ -26,9 +26,10 @@ class News(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=150, db_index=True, verbose_name='Назва категорії')
+    description = models.TextField(max_length=200, verbose_name='Опис')
 
     def get_absolute_url(self):
-        return reverse('category', kwargs={'category_id': self.pk})
+        return reverse('category', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.title

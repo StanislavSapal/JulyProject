@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Додавання категорії :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<h1>Додавання категорії</h1>
+
+<form action="{% url 'add_category' %}" method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary btn-block">Додати категорію</button>
+</form>
+
+{% endblock %}

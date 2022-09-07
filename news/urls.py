@@ -4,10 +4,12 @@ from .views import *
 
 urlpatterns = [
     path('', HomeNews.as_view(), name='home'),
-    path('category/<int:category_id>/', NewsByCategory.as_view(extra_context={'title': 'Обрана категорія'}),
+    path('category/<int:pk>/', NewsByCategory.as_view(extra_context={'title': 'Обрана категорія'}),
          name='category'),
     path('news/<int:pk>/', ViewNews.as_view(), name='view_news'),
-    path('news/add-news/', CreateNews.as_view(), name='add_news')
+    path('news/add-news/', CreateNews.as_view(), name='add_news'),
+    path('category_description/<int:pk>/', ViewCategory.as_view(), name='category_description'),
+    path('news/add-category/', CreateCategory.as_view(), name='add_category')
     # path('', index, name='home'),
     # path('test/', test),
     # path('rename_latest_news/', rename_to_govno),
