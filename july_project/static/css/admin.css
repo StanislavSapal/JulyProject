@@ -1,0 +1,21 @@
+#header {
+    background: #757575;
+    color: #fff;
+}
+
+.module caption {
+    background: #757575;
+}
+
+div.breadcrumbs {
+    background: #212121;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #424242;
+}
+
+div.submit-row {
+    --primary: #757575;
+    --secondary: #424242;
+}
