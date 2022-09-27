@@ -7,7 +7,8 @@ urlpatterns = [
     path('category/<int:category_id>/', NewsByCategory.as_view(extra_context={'title': 'Обрана категорія'}),
          name='category'),
     path('news/<int:pk>/', ViewNews.as_view(), name='view_news'),
-    path('news/add-news/', CreateNews.as_view(), name='add_news')
+    path('news/add-news/', CreateNews.as_view(), name='add_news'),
+    path('test/', test, name='test')
     # path('', index, name='home'),
     # path('test/', test),
     # path('rename_latest_news/', rename_to_govno),

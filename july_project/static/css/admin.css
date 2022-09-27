@@ -15,7 +15,6 @@ div.breadcrumbs {
     background: #424242;
 }
 
-div.submit-row {
-    --primary: #757575;
-    --secondary: #424242;
+.input.default {
+    background: #212121;
 }

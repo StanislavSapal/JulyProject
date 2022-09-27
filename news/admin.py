@@ -16,9 +16,10 @@ class NewsAdmin(admin.ModelAdmin):
     save_on_top = True
 
     def get_photo(self, obj):
-        return mark_safe(f'<img src="{obj.photo.url}" width="75">')
+        if obj.photo:
+            return mark_safe(f'<img src="{obj.photo.url}" width="75">')
 
-    get_photo.short_description = 'Фото'
+    get_photo.short_description = 'Пікча'
 
 
 class CategoryAdmin(admin.ModelAdmin):
