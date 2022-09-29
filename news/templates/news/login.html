@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Зворотній зв'язок :: {{ block.super }}
+Авторизація :: {{ block.super }}
 {% endblock %}
 
 {% block sidebar %}
@@ -10,11 +10,17 @@
 
 
 {% block content %}
-<h1>Зворотній зв'язок</h1>
+<h1>Авторизація</h1>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-primary btn-block">Відправити</button>
+    <button type="submit" class="btn btn-primary btn-block">Увійти</button>
 </form>
 
 {% endblock %}
+
+
+
+
+
+
