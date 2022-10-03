@@ -13,7 +13,7 @@ from django.contrib import messages
 from django.contrib.auth import login, logout
 
 
-def test(request):
+def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -21,11 +21,11 @@ def test(request):
                              ['sapals.rozetka@gmail.com'], fail_silently=False)
             if mail:
                 messages.success(request, 'Емейл відправлено')
-                return redirect('test')
+                return redirect('contact')
             else:
                 messages.error(request, 'Помилка відправки')
         else:
-            messages.error(request, 'Помилка реєстрації')
+            messages.error(request, 'Помилка валідації')
     else:
         form = ContactForm()
     return render(request, 'news/test.html', {"form": form})
@@ -68,8 +68,8 @@ class HomeNews(MyMixin, ListView):
     template_name = 'news/home_news_list.html'
     context_object_name = 'news'
     # extra_context = {'title': 'Головна'}
-    mixin_prop = 'hello world'
-    paginate_by = 2
+    # mixin_prop = 'hello world'
+    paginate_by = 5
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -86,7 +86,7 @@ class NewsByCategory(MyMixin, ListView):
     template_name = 'news/home_news_list.html'
     context_object_name = 'news'
     allow_empty = False
-    paginate_by = 2
+    paginate_by = 5
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -126,10 +126,10 @@ def get_category(request, category_id):
 #        }
 #    return render(request, 'news/index.html', context)
 
-#def view_news(request, news_id):
-    #news_item = News.objects.get(pk=news_id)
-#    news_item = get_object_or_404(News, pk=news_id)
-#    return render(request, 'news/view_news.html', {'news_item': news_item})
+# def view_news(request, news_id):
+#     news_item = News.objects.get(pk=news_id)
+#     news_item = get_object_or_404(News, pk=news_id)
+#     return render(request, 'news/view_news.html', {'news_item': news_item})
 
 
 # def add_news(request):
@@ -145,7 +145,7 @@ def get_category(request, category_id):
 #    return render(request, 'news/add_news.html', {'form': form})
 
 
-#def test(request):
+# def test(request):
 #    latest_news = News.objects.filter(title='Новина 1').first()
 
 #    if latest_news:
@@ -160,7 +160,7 @@ def get_category(request, category_id):
 # Якщо її тітл Говно - пише шо так і було
 
 
-#def rename_to_govno(request):
+# def rename_to_govno(request):
 #    latest_news = News.objects.all().order_by('-created_at').first()
 
 #    if latest_news.title == 'Говно':
@@ -175,7 +175,8 @@ def get_category(request, category_id):
 # Створити вьюху delete_govno яка якшо новинa з тітлом Говно є, то видаляє і пише шо удалила, якшо нема, пише "такої
 # новини немає"
 
-#def delete_govno(request):
+
+# def delete_govno(request):
 #    govno_news = News.objects.filter(title='Говно').first()
 #
 #    if not govno_news:
