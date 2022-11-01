@@ -3,10 +3,11 @@ from django.test import TestCase
 
 class Test(TestCase):
     pass
-    # code for this class
-    # code for this class
-    # code for this class
-    # code for this class
+<<<<<<< HEAD
+    # modified code for this class
+    # modified code for this class
+    # modified code for this class
+    # modified code for this class
 
 
 class NewTest(TestCase):
@@ -14,3 +15,4 @@ class NewTest(TestCase):
     # code for this class
     # code for this class
     # code for this class
+
