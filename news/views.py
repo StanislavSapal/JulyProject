@@ -108,9 +108,7 @@ class ViewNews(DetailView):
 class CreateNews(LoginRequiredMixin, CreateView):
     form_class = NewsForm
     template_name = 'news/add_news.html'
-    # success_url = reverse_lazy('home')
     raise_exception = False
-    # login_url = '/admin/'
 
 
 def get_category(request, category_id):
